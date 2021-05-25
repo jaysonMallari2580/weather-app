@@ -2,7 +2,6 @@ package com.example.weatherapp.data.remote.network.api
 
 import com.example.weatherapp.data.models.Forecast.ForecastResponseListDTO
 import com.example.weatherapp.data.models.WeatherResponseListDTO
-import com.example.weatherapp.data.remote.network.WeatherManager
 import retrofit2.http.GET
 import retrofit2.http.Query
 
