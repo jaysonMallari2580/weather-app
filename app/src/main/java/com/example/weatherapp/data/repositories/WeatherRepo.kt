@@ -5,15 +5,14 @@ import com.example.weatherapp.data.models.Forecast.ForecastResponseListDTO
 import com.example.weatherapp.data.models.WeatherResponseDTO
 import com.example.weatherapp.data.models.WeatherResponseListDTO
 import com.example.weatherapp.data.remote.network.WeatherManager
+import com.example.weatherapp.data.remote.network.api.WeatherApiHelper
 import io.reactivex.Single
+import javax.inject.Inject
 
-class WeatherRepo {
+class WeatherRepo @Inject constructor(private val apiHelper: WeatherApiHelper) {
 
-    suspend fun getWeather(cityName:String): WeatherResponseListDTO{
-        return WeatherManager().getWeather(cityName)
-    }
+    suspend fun getWeather(cityName:String) = apiHelper.getWeather(cityName)
 
-     suspend fun getForecast(lat:Double ,lon:Double ): ForecastResponseListDTO{
-        return WeatherManager().getForecast(lat,lon)
-    }
+     suspend fun getForecast(lat:Double ,lon:Double ) = apiHelper.getForecast(lat,lon)
+
 }

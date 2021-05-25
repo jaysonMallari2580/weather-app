@@ -14,8 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherapp.adapter.DailyForecastAdapter
 import com.example.weatherapp.adapter.HourlyForecastAdapter
 import com.example.weatherapp.databinding.MainFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     lateinit var binding: MainFragmentBinding

@@ -1,17 +1,20 @@
 package com.example.weatherapp
 import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.weatherapp.data.models.WeatherResponseDTO
 import com.example.weatherapp.data.models.WeatherResponseListDTO
 import com.example.weatherapp.data.repositories.WeatherRepo
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class MainViewModel : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val weatherRepo: WeatherRepo):ViewModel(){
 
     //lat &lon
     private var _lat:Double =0.00
@@ -29,9 +32,6 @@ class MainViewModel : ViewModel() {
     var _cityName = String()
     val cityName get() = _cityName
 
-    private val weatherRepo: WeatherRepo by lazy {
-        WeatherRepo()
-    }
 
 
     private var _test = MutableLiveData<String>()

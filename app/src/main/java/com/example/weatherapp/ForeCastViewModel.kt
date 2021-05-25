@@ -7,23 +7,20 @@ import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.data.models.Forecast.DailyDTO
 import com.example.weatherapp.data.models.Forecast.HourlyDTO
 import com.example.weatherapp.data.repositories.WeatherRepo
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class ForeCastViewModel: ViewModel() {
+@HiltViewModel
+class ForeCastViewModel @Inject constructor(private val weatherRepo: WeatherRepo): ViewModel() {
 
     private var _dailyForecastList = MutableLiveData<List<DailyDTO>>()
     val dailyForecastList get() = _dailyForecastList
 
     private var _hourlyForecastList = MutableLiveData<List<HourlyDTO>>()
     val hourlyForecastList get() = _hourlyForecastList
-
-
-    private val weatherRepo : WeatherRepo by lazy{
-        WeatherRepo()
-    }
 
 
 
